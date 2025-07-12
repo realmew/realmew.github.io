@@ -119,10 +119,10 @@ export default function ArtGallery() {
 
 	const handleDragEnd = () => {
 		dragInfo.current = { idx: null, offsetX: 0, offsetY: 0 };
-		window.removeEventListener("mousemove", handleDragMove as EventListener, false);
-		window.removeEventListener("mouseup", handleDragEnd, false);
-		window.removeEventListener("touchmove", handleDragMove as EventListener, false);
-		window.removeEventListener("touchend", handleDragEnd, false);
+	window.removeEventListener("mousemove", handleDragMove as EventListener, false);
+	window.removeEventListener("mouseup", handleDragEnd);
+	window.removeEventListener("touchmove", handleDragMove as EventListener);
+	window.removeEventListener("touchend", handleDragEnd, false);
 	};
 
   return (
