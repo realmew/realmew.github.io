@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+
+/* Pastel waves pulsating off the button */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Pastel pulsing lights for vault icon button */
+.animate-pulse-slow {
+  animation: pulseGlow 2.4s infinite alternate;
+}
+.animate-pulse-slow2 {
+  animation: pulseGlow2 2.8s infinite alternate;
+}
+.animate-pulse-slow3 {
+  animation: pulseGlow3 3.2s infinite alternate;
+}
+@keyframes pulseGlow {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 0.8; transform: scale(1.15); }
+}
+@keyframes pulseGlow2 {
+  0% { opacity: 0.4; transform: scale(1); }
+  100% { opacity: 0.7; transform: scale(1.12); }
+}
+@keyframes pulseGlow3 {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.6; transform: scale(1.18); }
+}
+
+
+@keyframes cinematic-fade {
+  0% { opacity: 0; filter: blur(8px) brightness(0.5); }
+  20% { opacity: 1; filter: blur(2px) brightness(1.1); }
+  60% { opacity: 1; filter: blur(0px) brightness(1.2); }
+  90% { opacity: 0.8; filter: blur(2px) brightness(0.9); }
+  100% { opacity: 0; filter: blur(8px) brightness(0.5); }
+}
+.animate-cinematic-fade {
+  animation: cinematic-fade 2.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes cinematic-title {
+  0% { opacity: 0; transform: scale(1.12) translateY(30px); filter: blur(8px); }
+  18% { opacity: 1; transform: scale(1.04) translateY(0); filter: blur(1.5px); }
+  40% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+  80% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+  100% { opacity: 0; transform: scale(1.08) translateY(-20px); filter: blur(6px); }
+}
+.animate-cinematic-title {
+  animation: cinematic-title 2.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* Optional: Cinematic overlay for extra drama */
+.cinematic-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.85) 100%);
+  z-index: 50;
+  animation: overlay-fade 2.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes overlay-fade {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}

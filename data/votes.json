@@ -1,0 +1,25 @@
+{
+  "votes": [
+    {
+      "id": 1,
+      "title": "Creative Direction A",
+      "votes": 0
+    },
+    {
+      "id": 2,
+      "title": "Creative Direction B",
+      "votes": 1
+    },
+    {
+      "id": 3,
+      "title": "Creative Direction C",
+      "votes": 0
+    },
+    {
+      "id": 4,
+      "title": "Creative Direction D",
+      "votes": 0
+    }
+  ],
+  "endTime": "2025-07-18T20:09:44.563Z"
+}
