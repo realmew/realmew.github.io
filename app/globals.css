@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Pastel pulsing lights for vault icon button */
+.animate-pulse-slow {
+  animation: pulseGlow 2.4s infinite alternate;
+}
+.animate-pulse-slow2 {
+  animation: pulseGlow2 2.8s infinite alternate;
+}
+.animate-pulse-slow3 {
+  animation: pulseGlow3 3.2s infinite alternate;
+}
+@keyframes pulseGlow {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 0.8; transform: scale(1.15); }
+}
+@keyframes pulseGlow2 {
+  0% { opacity: 0.4; transform: scale(1); }
+  100% { opacity: 0.7; transform: scale(1.12); }
+}
+@keyframes pulseGlow3 {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.6; transform: scale(1.18); }
+}
+
+
+@keyframes cinematic-fade {
+  0% { opacity: 0; filter: blur(8px) brightness(0.5); }
+  20% { opacity: 1; filter: blur(2px) brightness(1.1); }
+  60% { opacity: 1; filter: blur(0px) brightness(1.2); }
+  90% { opacity: 0.8; filter: blur(2px) brightness(0.9); }
+  100% { opacity: 0; filter: blur(8px) brightness(0.5); }
+}
+.animate-cinematic-fade {
+  animation: cinematic-fade 2.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes cinematic-title {
+  0% { opacity: 0; transform: scale(1.12) translateY(30px); filter: blur(8px); }
+  18% { opacity: 1; transform: scale(1.04) translateY(0); filter: blur(1.5px); }
+  40% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+  80% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+  100% { opacity: 0; transform: scale(1.08) translateY(-20px); filter: blur(6px); }
+}
+.animate-cinematic-title {
+  animation: cinematic-title 2.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* Optional: Cinematic overlay for extra drama */
+.cinematic-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.85) 100%);
+  z-index: 50;
+  animation: overlay-fade 2.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes overlay-fade {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* 3D Card Carousel Styles */
+.carousel-track {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.card-container {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+/* Default positions */
+.left-card {
+  transform: translateX(-120px) rotateY(30deg) scale(0.75);
+}
+
+.right-card {
+  transform: translateX(120px) rotateY(-30deg) scale(0.75);
+}
+
+.center-card {
+  transform: translateX(0) rotateY(0deg) scale(1);
+  z-index: 10;
+}
+
+/* Sliding animations */
+.transitioning .card-container {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide-out-left {
+  transform: translateX(-200px) rotateY(45deg) scale(0.6) !important;
+  opacity: 0.2 !important;
+}
+
+.slide-out-right {
+  transform: translateX(200px) rotateY(-45deg) scale(0.6) !important;
+  opacity: 0.2 !important;
+}
+
+.slide-center {
+  transform: translateX(0) rotateY(0deg) scale(1.05) !important;
+  opacity: 1 !important;
+}
+
+/* Card hover effects during transition */
+.transitioning .archive-single-card:hover {
+  transform: none !important;
+}
+
+.archive-single-card {
+  width: 350px;
+  height: 280px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.archive-single-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced navigation buttons */
+button {
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+button:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Button disabled state during transition */
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Scrollbar styling for tracklist */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
